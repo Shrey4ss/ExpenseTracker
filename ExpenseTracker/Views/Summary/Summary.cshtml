@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Expense>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Expense Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td scope="row">@v.ExpenseName</td>
+                <td>@v.Amount</td>
+                <td>@v.Date</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-route-id="@v.Id" asp-action="Delete" class="btn btn-danger mx-2"> <i class="bi bi-pencil-square"></i> Delete Expense</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+    <div class="row">
+        <div class="col-9 w-20 btn-group" role="group">
+        </div>
+        <div class=" col-2 btn-group" role="group">
+            <a asp-route-id="@ViewBag.Id" asp-controller="Expense" asp-action="Add" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Add Expense</a>
+        </div>
+        <div class="col-1 w-20 btn-group" role="group">
+            <a asp-action="SummaryIndex" class="btn btn-primary mx-2"> Back</a>
+        </div>
+    </div>
+</table>
+<br />
+
+@if (Model.Any())
+{
+    <h2 class="text-center text-danger">You have Used @Model.OrderBy(u => u.Id).LastOrDefault().total  Out Of @Model.FirstOrDefault().Debit.Amount</h2>
+    <br />
+    <h2 class="text-center text-danger">You are Left With @(Model.FirstOrDefault().Debit.Amount - (Model.OrderBy(u => u.Id).LastOrDefault().total)) </h2>
+
+}
+else
+{
+    <h2 class="text-danger">You have Used 0$  Out Of Your Current Balance</h2>
+   
+
+}

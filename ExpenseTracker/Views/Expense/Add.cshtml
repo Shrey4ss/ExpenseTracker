@@ -1,0 +1,76 @@
+﻿@{
+    
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Expense
+<div class="container py-2">
+    <div class="row pt-12 border">
+        <div>
+            <form id="registerForm" class="row" method="post">
+                <div class="border col-12">
+                    <h2>Add Your Expense</h2>
+
+                </div>
+                <div class="row">
+                    <div class="col-10 w-20 btn-group" role="group">
+                    </div>
+                    <div class="col-2 w-20 btn-group" role="group">
+                        <a asp-route-id="@ViewBag.Id" asp-controller="Summary" asp-action="Summary" class="btn btn-primary form-control "> <i class="bi bi-card-heading"></i> View Summary</a>
+                    </div>
+                </div>
+                @if (@ViewBag.Total == @ViewBag.Amount)
+                {
+                    <h2 class="text-danger px-4">Your Debited Amount Limit is Reached, You cannot Add Extra Expense</h2>
+                    <br /> <br />
+                    <div class="row">
+                        <div class="col-6 ">
+                            <a asp-controller="Home" asp-action="Index" value="Add to Cart" class="btn btn-outline-secondary form-control " >Back to Home</a>
+                        </div>
+                       
+                    </div>
+                    <br />
+                    <br />
+                }
+                else{
+
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class=" py-2 col-12">
+                    <label>Amount</label>
+
+                    <input class="form-control" type="number" asp-for="Amount" />
+
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+
+                <div class=" py-2 col-12">
+                    <label>Reason of expense</label>
+                    <input class="form-control" type="text" asp-for="ExpenseName" />
+                    <span asp-validation-for="ExpenseName" class="text-danger"></span>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 py-4">
+                    <label for="startDate">Date</label>
+                    <input asp-for="Date" class="form-control" type="date" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="row  pb-2 ">
+
+                    <div class="col-12 col-md-6 pb-1">
+                        <button class="btn btn-primary form-control" type="submit" style="height:50px;" asp-action="Add">Add</button>
+                    </div>
+                    <div class="col-12 col-md-6 pb-1">
+                        <a asp-controller="Home" asp-action="Index" value="Add to Cart" class="btn btn-outline-secondary form-control" style="height:50px;">Back to Home</a>
+                    </div>
+
+                </div>
+                }
+
+            </form>
+        </div>
+    </div>
+</div>

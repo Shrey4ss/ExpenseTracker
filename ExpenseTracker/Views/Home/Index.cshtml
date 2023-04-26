@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class= "text-center row">
+    <h4>Welcome Bruh</h4><br />
+    <br />
+    <br /><br /><br /><br /><br />
+    <div class="col-6">
+        <a asp-controller="Debit" asp-action="DebitIndex" type="submit" class="btn btn-primary" style="width:150px">Add Debit</a>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Expense" asp-action="ExpenseIndex" type="submit" class="btn btn-primary" style="width:150px">Add Expense</a>
+    </div>
+    
+</div>
+<br />
+<br />
+<br />
+<div class="text-center row">
+    <div class="col-12">
+        <a asp-controller="Summary" asp-action="SummaryIndex" type="submit" class="btn btn-primary" style="width:150px">Summary</a>
+    </div>
+</div>
