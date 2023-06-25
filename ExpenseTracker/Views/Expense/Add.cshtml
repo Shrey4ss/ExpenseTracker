@@ -37,11 +37,9 @@
                 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class=" py-2 col-12">
-                    <label>Amount</label>
-
-                    <input class="form-control" type="number" asp-for="Amount" />
-
-                    <span asp-validation-for="Amount" class="text-danger"></span>
+                        <label>Amount</label>
+                        <input class="form-control" type="number" aria-required="true" asp-for="Amount" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
 
                 <div class=" py-2 col-12">
@@ -51,17 +49,17 @@
                 </div>
 
                 <div class="col-lg-3 col-sm-6 py-4">
-                    <label for="startDate">Date</label>
-                    <input asp-for="Date" class="form-control" type="date" />
+                    <label>Date</label>
+                    <input  class="form-control" type="date"  asp-for="Date"/>
                     <span asp-validation-for="Date" class="text-danger"></span>
                 </div>
-
+                    
 
 
                 <div class="row  pb-2 ">
 
                     <div class="col-12 col-md-6 pb-1">
-                        <button class="btn btn-primary form-control" type="submit" style="height:50px;" asp-action="Add">Add</button>
+                        <button class="btn btn-primary form-control" type="submit" style="height:50px;" >Add</button>
                     </div>
                     <div class="col-12 col-md-6 pb-1">
                         <a asp-controller="Home" asp-action="Index" value="Add to Cart" class="btn btn-outline-secondary form-control" style="height:50px;">Back to Home</a>

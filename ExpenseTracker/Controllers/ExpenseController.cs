@@ -38,14 +38,16 @@ namespace ExpenseTracker.Controllers
         }
 
        [HttpPost]
-        public IActionResult Add(Expense expense,int id)
+        [ActionName("Add")]
+        public IActionResult Addexp(Expense expense,int id)
         {
+
             var expenseFromDb = _expense.GetLastId(id);
             var debitFromDb = _debit.GetId(id);
 
-            
             if (ModelState.IsValid)
             {
+                
                 if (expenseFromDb == null)
                 {
                     if(expense.Amount > debitFromDb.Amount)
@@ -103,7 +105,9 @@ namespace ExpenseTracker.Controllers
 
 
             }
-          
+            ViewBag.Total = 0;
+            ViewBag.Amount = 1;
+
             return View();
         }
     }
